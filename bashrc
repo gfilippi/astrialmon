@@ -187,4 +187,4 @@
 # alias cd=cd_func
 
 # SysEle
-export PATH=export PATH=$PATH:~/opt/astrialmon/bin
+export PATH=export PATH=$PATH:/opt/astrialmon/bin

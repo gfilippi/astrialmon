@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-for i in `find /home/ -wholename "/home/user*" -type d`;
+for i in `find /home/ -wholename "/home/user??" -type d`;
 do
   #echo $i
 
@@ -15,6 +15,7 @@ do
 
   chown -R $u:$u $i
   passwd -d $u
+  
   chfn -f "testuser" $u
 
 done

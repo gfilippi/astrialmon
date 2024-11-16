@@ -15,5 +15,6 @@ do
 
   chown -R $u:$u $i
   passwd -d $u
+  chfn -f "testuser" $u
 
 done

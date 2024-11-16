@@ -33,3 +33,7 @@ nano /etc/rc.local
 ===============
 # SysEle
 # /opt/astrialmon/bin/amon_server.py 2>&1 >/dev/null
+
+change full user name
+===============
+sudo chfn -f "test user"

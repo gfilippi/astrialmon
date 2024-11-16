@@ -2,8 +2,9 @@ import socket
 import curses
 import time
 
-_SOCKET_TIMEOUT=3000
-_SOCKET_MAXLEN=4096
+_SOCKET_TIMEOUT  = 3000
+_SOCKET_MAXLEN   = 4096
+_CURSE_REFRESH_S = 2
 
 # Function to connect to a server and fetch data
 def fetch_data_from_server(server_ip, server_port):
@@ -47,19 +48,21 @@ def display_data(stdscr, all_server_data):
         stdscr.addstr(y, 0, f"Server {server_ip} : {custom_message}", curses.A_BOLD)
         stdscr.attroff(curses.color_pair(2))
 
-        y += 2  # Skip a line after the header
+        y += 1  # Skip a line after the header
 
         # Extract the logged users (all subsequent lines)
         logged_users = []
         for line in lines:
             if line.strip():  # Ignore empty lines
                 user, message = line.split(" | ")
-                logged_users.append(user)
+                user = user.rstrip()
+                if("root" not in user):
+                   logged_users.append(user)
 
         # Display logged users as a comma-separated list
         users_line = ", ".join(logged_users)
         stdscr.attron(curses.color_pair(1))
-        stdscr.addstr(y, 0, users_line)
+        stdscr.addstr(y, 2, users_line)
         stdscr.attroff(curses.color_pair(1))
 
         y += 2  # Leave space between server blocks
@@ -74,7 +77,7 @@ def main(stdscr):
     server_port = 12345  # Port used by the server
 
     # Polling interval (in seconds)
-    polling_interval = 3  # Set polling interval to 5 seconds
+    polling_interval = _CURSE_REFRESH_S
 
     # Dictionary to store data from each server
     all_server_data = {}

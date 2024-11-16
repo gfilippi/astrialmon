@@ -1,12 +1,18 @@
+#! /usr/bin/python3
+
 import socket
 import psutil
 import time
+import pwd
 
 # Function to get logged-in users
 def get_logged_users():
     users = []
     for user in psutil.users():
-        users.append(f"{user.name} ({user.host})")
+        tmp=(pwd.getpwnam(f"{user.name}").pw_gecos).split(',')[0]
+        users.append(f"{user.name}({tmp})")
+        #users.append(f"{user.name}({tmp})({user.host})")
+
     return users
 
 # Function to get a unique custom message for each server

@@ -1,0 +1,35 @@
+mkdir /opt/astrialmon
+
+change hostname:
+===============
+nano /etc/hostname
+(use "astrial-00", "astrial-10", "astrial-20" etc)
+sync
+reboot
+
+add users:
+===============
+useradd -s /bin/bash -G root user01 
+(where the first number is the same of the board hostname)
+
+set users as root permissions
+===============
+nano /etc/sudoers
+user01 ALL=(ALL:ALL) ALL
+
+git checkout astialmon into /opt
+
+setup user bash (for each user)
+===============
+cp /opt/astrialmon/bashrc ~/.bashrc
+cp /opt/astrialmon/bash_profile ~/.bash_profile
+cp /opt/astrialmon/bash_login ~/.bash_login
+
+list open ports
+===============
+ netstat -tulpn | grep LISTEN
+
+nano /etc/rc.local
+===============
+# SysEle
+# /opt/astrialmon/bin/amon_server.py 2>&1 >/dev/null

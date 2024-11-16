@@ -4,6 +4,7 @@ import socket
 import psutil
 import time
 import pwd
+import os
 
 # Function to get logged-in users
 def get_logged_users():
@@ -17,7 +18,11 @@ def get_logged_users():
 
 # Function to get a unique custom message for each server
 def get_custom_message():
-    return "Welcome to the Linux system!"
+    if os.path.exists("/tmp/amon_lock"):
+       with open('/tmp/amon_lock', 'r') as f:
+          return "Hailo-8 LOCKED by "+str(f.read())
+    else:
+       return "FREE"
 
 # Server code
 def start_server(host, port):

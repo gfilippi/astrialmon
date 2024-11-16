@@ -27,8 +27,9 @@ def display_data(stdscr, all_server_data):
     # Colors setup
     curses.start_color()
     curses.init_pair(1, curses.COLOR_CYAN, curses.COLOR_BLACK)  # For logged users
-    curses.init_pair(2, curses.COLOR_YELLOW, curses.COLOR_BLACK)  # For custom message
-
+    curses.init_pair(2, curses.COLOR_WHITE, curses.COLOR_BLACK)  # For custom message
+    curses.init_pair(3, curses.COLOR_RED, curses.COLOR_BLACK)  # For custom message
+    
     # Initialize the y position for displaying each server's data
     y = 1
 
@@ -44,10 +45,15 @@ def display_data(stdscr, all_server_data):
         custom_message = lines[0].split(" | ")[1] if lines else "No message received"
 
         # Title for each server
-        stdscr.attron(curses.color_pair(2))
-        stdscr.addstr(y, 0, f"Server {server_ip} : {custom_message}", curses.A_BOLD)
-        stdscr.attroff(curses.color_pair(2))
-
+        if "FREE" in custom_message:
+            #stdscr.attron(curses.color_pair(2))
+            stdscr.addstr(y, 0, f"Server {server_ip} : {custom_message}", curses.color_pair(2) | curses.A_BOLD )
+            #stdscr.attroff(curses.color_pair(2))
+        else:
+            #stdscr.attron(curses.color_pair(3))
+            stdscr.addstr(y, 0, f"Server {server_ip} : {custom_message}",curses.color_pair(3) | curses.A_BOLD)
+            #stdscr.attroff(curses.color_pair(3))
+            
         y += 1  # Skip a line after the header
 
         # Extract the logged users (all subsequent lines)

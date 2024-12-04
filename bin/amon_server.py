@@ -18,11 +18,17 @@ def get_logged_users():
 
 # Function to get a unique custom message for each server
 def get_custom_message():
+    myhost = ''
+    with open('/etc/hostname', 'r') as f:
+          myhost = str(f.read())
+          myhost = myhost.strip()
+          myhost = myhost.rstrip()
+          
     if os.path.exists("/tmp/amon_lock"):
        with open('/tmp/amon_lock', 'r') as f:
-          return "Hailo-8 LOCKED by "+str(f.read())
+          return myhost+" - LOCKED by "+str(f.read())
     else:
-       return "FREE"
+       return myhost+" - FREE"
 
 # Server code
 def start_server(host, port):

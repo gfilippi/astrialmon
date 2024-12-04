@@ -4,13 +4,15 @@ import time
 
 _SOCKET_TIMEOUT  = 3000
 _SOCKET_MAXLEN   = 4096
-_CURSE_REFRESH_S = 2
+_CURSE_REFRESH_S = 1
 
 # Function to connect to a server and fetch data
 def fetch_data_from_server(server_ip, server_port):
     try:
         # Establish connection with the server
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        mysock.settimeout(2)
+        with mysock as s:
             s.connect((server_ip, server_port))
             # Receive data (max 4096 bytes)
             data = s.recv(_SOCKET_MAXLEN).decode('utf-8')
@@ -29,7 +31,7 @@ def display_data(stdscr, all_server_data):
     curses.init_pair(1, curses.COLOR_CYAN, curses.COLOR_BLACK)  # For logged users
     curses.init_pair(2, curses.COLOR_WHITE, curses.COLOR_BLACK)  # For custom message
     curses.init_pair(3, curses.COLOR_RED, curses.COLOR_BLACK)  # For custom message
-    
+
     # Initialize the y position for displaying each server's data
     y = 1
 
@@ -53,7 +55,7 @@ def display_data(stdscr, all_server_data):
             #stdscr.attron(curses.color_pair(3))
             stdscr.addstr(y, 0, f"Server {server_ip} : {custom_message}",curses.color_pair(3) | curses.A_BOLD)
             #stdscr.attroff(curses.color_pair(3))
-            
+
         y += 1  # Skip a line after the header
 
         # Extract the logged users (all subsequent lines)
@@ -79,7 +81,7 @@ def display_data(stdscr, all_server_data):
 # Main function to run the client with polling
 def main(stdscr):
     # Define a list of server IP addresses and ports
-    server_ips = ["192.168.10.105",]  # List of server IPs
+    server_ips = ["192.168.8.140","192.168.8.153","192.168.8.151","192.168.8.132",]  # List of server IPs
     server_port = 12345  # Port used by the server
 
     # Polling interval (in seconds)

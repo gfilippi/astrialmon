@@ -25,4 +25,13 @@ do
   rm $i/bin/amon_client.py
   rm $i/bin/runme.sh
 
+  # clone astrial_primer if needed
+  if [ -d /opt/astrial_primer ]; then
+     if [ -f $i/astrial_primer ]; then
+        rm -rf $i/astrial_primer
+     fi
+
+     cp -r /opt/astrial_primer $/
+  fi
+
 done

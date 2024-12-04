@@ -23,5 +23,6 @@ do
 
   # remove non useful commands
   rm $i/bin/amon_client.py
+  rm $i/bin/runme.sh
 
 done

@@ -34,7 +34,7 @@ fi
 # If all checks pass, print the message
 MYUSER=`whoami`
 
-chfn -f $1 $MYUSER
+sudo chfn -f $1 $MYUSER
 
 echo
 echo "hello $MYUSER: your name is now $1"

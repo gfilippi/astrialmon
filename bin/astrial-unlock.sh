@@ -5,6 +5,8 @@ if test -f /tmp/amon_lock; then
    echo "removing lock owned by: $own"
    rm -f /tmp/amon_lock
    echo "OK"
+else
+   echo "Board hw is already unlocked."
 fi
 
 

@@ -13,9 +13,11 @@ do
   \cp /opt/astrialmon/bash_profile $i/.bash_profile
   \cp /opt/astrialmon/bash_login $i/.bash_login
 
+  \cp -R /opt/astrialmon/bin $i/
+
   chown -R $u:$u $i
   passwd -d $u
-  
+
   chfn -f "testuser" $u
 
 done

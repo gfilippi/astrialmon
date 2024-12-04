@@ -17,6 +17,11 @@ set users as root permissions
 nano /etc/sudoers
 user01 ALL=(ALL:ALL) ALL
 
+add python symlink
+==============
+ln -s /usr/bin/python3 /usr/bin/python
+
+
 git checkout astialmon into /opt
 
 setup user bash (for each user)

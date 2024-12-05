@@ -52,6 +52,13 @@ cd ./debs
 cp ./imx8mp-astrial.dtb /run/media/boot-mmcblk1p1/imx8mp-astrial.dtb
 dpkg -i ./*.deb
 
+install pips
+====================
+pip3 install gpiod
+pip3 install loguru
+pip install --ignore-installed Pillow==9.0.0
+
+
 change full user name
 ===============
 sudo chfn -f "test user" user01

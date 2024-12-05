@@ -40,12 +40,17 @@ list open ports
  netstat -tulpn | grep LISTEN
 
 nano /etc/rc.local
-===============
+==================
 # SysEle
-/opt/astrialmon/bin/amon_server.py 2>&1 >/dev/null
-cd /opt/imx8-isp/bin
-./run.sh -lm -c dual_imx219_1080p60 &
+/opt/astrialmon/bin/amon_server.py 2>&1 >/dev/null &
+cd /opt/imx8-isp/bin && ./run.sh -lm -c dual_imx219_1080p60 &
 
+
+install dtb and debs
+====================
+cd ./debs
+cp ./imx8mp-astrial.dtb /run/media/boot-mmcblk1p1/imx8mp-astrial.dtb
+dpkg -i ./*.deb
 
 change full user name
 ===============

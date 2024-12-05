@@ -81,7 +81,9 @@ def display_data(stdscr, all_server_data):
 # Main function to run the client with polling
 def main(stdscr):
     # Define a list of server IP addresses and ports
-    server_ips = ["192.168.8.140","192.168.8.153","192.168.8.151","192.168.8.132",]  # List of server IPs
+    #server_ips = ["192.168.8.140","192.168.8.153","192.168.8.151","192.168.8.132",]  # List of server IPs
+    server_ips = ["192.168.8.140","192.168.8.153","192.168.8.151","192.168.8.132","192.168.8.158"]
+
     server_port = 12345  # Port used by the server
 
     # Polling interval (in seconds)

@@ -36,7 +36,7 @@ do
      fi
 
      cp -r /opt/astrial_primer $i/
-     chown -R $i:$i $i/astrial_primer
+     chown -R $u:$u $i/astrial_primer
   fi
 
 done

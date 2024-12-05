@@ -43,6 +43,9 @@ nano /etc/rc.local
 ===============
 # SysEle
 /opt/astrialmon/bin/amon_server.py 2>&1 >/dev/null
+cd /opt/imx8-isp/bin
+./run.sh -lm -c dual_imx219_1080p60 &
+
 
 change full user name
 ===============

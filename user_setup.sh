@@ -1,5 +1,9 @@
 #!/bin/bash
 
+\cp /opt/astrialmon/bashrc /home/root/.bashrc
+\cp /opt/astrialmon/bash_profile /home/root/.bash_profile
+\cp /opt/astrialmon/bash_login /home/root/.bash_login
+
 
 for i in `find /home/ -wholename "/home/user??" -type d`;
 do

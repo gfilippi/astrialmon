@@ -31,7 +31,7 @@ do
         rm -rf $i/astrial_primer
      fi
 
-     cp -r /opt/astrial_primer $/
+     cp -r /opt/astrial_primer $i/
   fi
 
 done

@@ -17,6 +17,11 @@ set users as root permissions
 nano /etc/sudoers
 user01 ALL=(ALL:ALL) ALL
 
+change root from sh to bash
+===========================
+nano /etc/passwd
+root:x:0:0:root:/home/root:/bin/bash
+
 add python symlink
 ==============
 ln -s /usr/bin/python3 /usr/bin/python

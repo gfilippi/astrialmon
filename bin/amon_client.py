@@ -28,8 +28,8 @@ def display_data(stdscr, all_server_data):
 
     # Colors setup
     curses.start_color()
-    curses.init_pair(1, curses.COLOR_CYAN, curses.COLOR_BLACK)  # For logged users
-    curses.init_pair(2, curses.COLOR_WHITE, curses.COLOR_BLACK)  # For custom message
+    curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)  # For logged users
+    curses.init_pair(2, curses.COLOR_GREEN, curses.COLOR_BLACK)  # For custom message
     curses.init_pair(3, curses.COLOR_RED, curses.COLOR_BLACK)  # For custom message
 
     # Initialize the y position for displaying each server's data
